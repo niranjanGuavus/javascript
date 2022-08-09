@@ -16,7 +16,6 @@ function print() {
  * Ans:- There is a way to deep clone like JSON.stingfy() then JSON.parse()
  * here we do a function to do it manually upto ndepth
  */
-
 function deepClone(obj, newObj) {
   if (!newObj) {
     newObj = {};
@@ -41,7 +40,6 @@ let person1 = {
     country: "india"
   }
 };
-
 console.log(deepClone(person1));
 
 /**
