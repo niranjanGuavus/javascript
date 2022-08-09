@@ -95,6 +95,5 @@ let obj1 = {
 let obj2 = {
   age: 100
 };
-
 console.log("age of ob2 is", obj1.showAge.call(obj2));
 //output:  age of ob2 is 100
