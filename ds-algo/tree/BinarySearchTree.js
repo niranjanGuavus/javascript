@@ -1,8 +1,9 @@
 /**
  * It creates Binary tree and do different operation against it 
+ * it search very fast over a balance tree. it's time complexity of a balance tree is O(log n)
  */
 
-class BSTNode {
+ class BSTNode {
   constructor(value, left, right) {
     this.value = value;
     this.left = left;
@@ -64,6 +65,105 @@ class BST {
     return false;
   }
 
+  // Depth first traversal
+  depthFirstTraversal(type) {
+    if(type === 'inOrder')
+      this.inOrderTraversal(this.root);
+    else if(type === 'preOrder')
+      this.preOrderTraversal(this.root);
+    else 
+      this.postOrderTraversal(this.root);
+  }
+
+  inOrderTraversal(node) {
+    if(node.left)
+      this.inOrderTraversal(node.left);
+    console.log(node.value);
+
+    if(node.right)
+      this.inOrderTraversal(node.right);
+  }
+
+  preOrderTraversal(node) {
+    console.log(node.value);
+
+    if(node.left)
+      this.preOrderTraversal(node.left);
+
+    if(node.right)
+      this.preOrderTraversal(node.right);
+  }
+
+  postOrderTraversal(node) {
+    if(node.left)
+      this.postOrderTraversal(node.left);
+      
+    if(node.right)
+      this.postOrderTraversal(node.right);
+
+    console.log(node.value);
+  }
+
+  breadthFirstTraversal() {
+    var queue = this.root ? [this.root] : [];
+    while(queue.length>0) {
+      let item = queue.shift();
+      if(item.left) queue.push(item.left);
+      if(item.right) queue.push(item.right);
+      console.log(item.value);
+    }
+  }
+
+  //function get max value
+  getMaxVal() {
+    let tempNode = this.root;
+    while(tempNode) {
+      if(tempNode.right){
+        tempNode = tempNode.right;
+      } else {
+        return tempNode.value;
+      }
+    }
+  }
+
+  //function get min value
+  getMinVal() {
+    let tempNode = this.root;
+    while(tempNode) {
+      if(tempNode.left){
+        tempNode = tempNode.left;
+      } else {
+        return tempNode.value;
+      }
+    }
+  }
+
+  //Sum of a tree
+  getSum() {
+    let queue = this.root ? [this.root] : [];
+    let sum =0;
+    while(queue.length>0) {
+      let item = queue.shift();
+      if(item.left) queue.push(item.left);
+      if(item.right) queue.push(item.right);
+      sum+= item.value;
+    }
+
+    return sum;
+  }
+
+  //get sum of a tree in a recursive manner
+  getSumRecursion(node) {
+    if(!node) return 0;
+
+    let left = this.getSumRecursion(node.left);
+    let right = this.getSumRecursion(node.right);
+
+    return node.value+left+right;
+  }
+
+
+
 }
 
 // Run the code
@@ -86,7 +186,24 @@ console.log('100 is present in tree', tree.contains(100));
 //Traversal 
 
 //Preorder
+console.log(" Traversal ======> Pre Order")
+tree.depthFirstTraversal('preOrder');
 
 //Inorder
+console.log(" Traversal ======> In Order")
+tree.depthFirstTraversal('inOrder');
 
 //postOrder 
+console.log(" Traversal ======> Post Order")
+tree.depthFirstTraversal('postOrder');
+
+//breadthFirstTraversal
+
+console.log(" Traversal ======> BFS")
+tree.breadthFirstTraversal();
+
+console.log(" Max value in Tree is =====> ", tree.getMaxVal());
+console.log(" Min value in Tree is =====> ", tree.getMinVal());
+console.log(" sum of Tree is =====> ", tree.getSum());
+
+console.log(" sum of Tree in recursive way =====> ", tree.getSumRecursion(tree.root));

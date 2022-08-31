@@ -16,25 +16,3 @@ function countSubstr(str, subStr) {
 
 
 //console.log(countSubstr('helloWorldhello', 'hello'));
-
-
-function binarySearch(arr, item){
-// add whatever parameters you deem necessary - good luck!
-let beginIndex = 0;
-let endIndex = arr.length-1;
-
-while(beginIndex <= endIndex) {
-  const midIndex = Math.floor((endIndex+beginIndex)/2);
-  console.log(`start:${beginIndex}  middle:${midIndex}  end:${endIndex}`)
-  if(arr[midIndex] === item)
-      return midIndex;
-  if(item > arr[midIndex]) {
-      beginIndex = midIndex+1;
-  }else {
-      endIndex = midIndex-1;
-  }
-}
-return -1;
-}
-
-console.log(binarySearch([1,2,3,4,5], 5));
