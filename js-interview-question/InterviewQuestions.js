@@ -11,7 +11,7 @@
 // Question 2: null vs undefined
 /**
  * null is a object type value. it is used to assign value to some variable.
- * undefined . this meas the variable declared not initializes.
+ * undefined . this means the variable declared not initializes.
  * null == undefined // true
  * null === undefined // false
  */

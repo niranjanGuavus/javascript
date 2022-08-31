@@ -45,12 +45,12 @@ console.log(deepClone(person1));
 /**
  * Ques 3: wite a pollyfill function of array reduce method
  */
-Array.prototype.reducer = function (fun, intialValue) {
+Array.prototype.reducer = function (fun, initialValue) {
   let values = this;
   for (const item of values) {
-    intialValue = intialValue !== undefined ? fun(intialValue, item) : item;
+    initialValue = initialValue !== undefined ? fun(initialValue, item) : item;
   }
-  return intialValue;
+  return initialValue;
 };
 
 /**

@@ -23,7 +23,7 @@ getMovies();
 Get API call through async and wait
 */
 
-async function getCuerency() {
+async function getCurrency() {
   try {
     let response = await fetch("https://jsonplaceholder.typicode.com/users");
     console.log(response);
@@ -35,22 +35,15 @@ async function getCuerency() {
   }
 }
 
-getCuerency();
+getCurrency();
 
-// async function getCuerency() {
 
-//     try {
-//         let response = await fetch('https://jsonplaceholder.typicode.com/users'/*,
-//          {mode: 'no-cors',
-//           'Content-Type': "application/json",
-//           }*/);
-//         console.log(response);
-//         let result = await response.json();
-//         console.log(result);
-//     }catch(error){
-//         console.log(`error :: ${error}`);
-//     }
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function sleep(fn, ...args) {
+  await timeout(3000);
+  return fn(...args);
+}
 
-// }
 
-// getCuerency();
